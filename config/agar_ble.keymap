@@ -24,38 +24,29 @@
 
 / {
     behaviors {
-        &mt {
+        // 에러 없이 완벽하게 통과했던 VIAL 감성 구름타법 적용 (200ms 순정 타이밍 복귀)
+        compat_mt: tap_dance_0 {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
             retro-tap;
+            bindings = <&kp>, <&kp>;
         };
-        
-        //output ~ with RShift
 
         mo: momentary_layer { display-name = "Layer Momentary"; };
         to: to_layer { display-name = "Layer To"; };
         tog: toggle_layer { display-name = "Layer Toggle"; };
-
-        // mt default: hold preferred. Rename it.
-
-        // mt_tp tap preferred
-
-        // lt default: tap preferred. Rename it.
-
-        // lt_hp:  hold preferred
-        
-
         trans: transparent { display-name = "_Trans"; };
         none: none { display-name = "Key(None)"; };
         
-
         #if 1
         out: outputs { display-name = "zmk_reserved_output_sel"; };
         ZMK_MACRO(Device_USB, bindings = <&out OUT_USB>;)
 
         bt: bluetooth { display-name = "zmk_reserved_bluetooth"; };
         
-        #define SHOW_LED 0xAB //A5-AF Reserved
+        #define SHOW_LED 0xAB
         ZMK_MACRO(FW_VER, bindings = <&kp LCTRL &kp LALT &kp LSHIFT &kp LGUI &kp RCTRL &kp RALT &kp RSHIFT &kp RGUI>;)
         ZMK_MACRO(zmk_reserved_bt_clear_0, bindings = <&bt BT_SEL 0>, <&bt BT_CLR>, <&kp SHOW_LED>;)
         ZMK_MACRO(zmk_reserved_bt_clear_1, bindings = <&bt BT_SEL 1>, <&bt BT_CLR>, <&kp SHOW_LED>;)
@@ -64,18 +55,12 @@
         ZMK_MACRO(zmk_reserved_bt_conn_1,  bindings = <&out OUT_BLE>, <&bt BT_SEL 1>, <&kp SHOW_LED>;)
         ZMK_MACRO(zmk_reserved_bt_conn_2,  bindings = <&out OUT_BLE>, <&bt BT_SEL 2>, <&kp SHOW_LED>;)
 
-        //
-
         sys_reset: sysreset { display-name = "zmk_reserved_reset"; };
         bootloader: bootload { display-name = "zmk_reserved_bootloader"; };
-        
-        
         studio_unlock: studio_unlock { display-name = "zmk_reserved_studio_unlock"; };
         #endif
-        
-        //mouse move
-        //mouse scroll
     };
+
     combos {
         compatible = "zmk,combos";
     };
@@ -87,7 +72,7 @@
 
         default_layer {
             bindings = <
-&gresc  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS  &kp EQUAL  &kp BSLH  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT  &kp BSPC  &mt LCTRL RIGHT_ALT  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI  &kp SQT  &kp RET  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT  &mo 1  &kp LEFT_WIN  &kp LA(LGUI)  &kp SPACE  &kp RA(RGUI)  &kp RG(RALT)
+&gresc  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS  &kp EQUAL  &kp BSLH  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT  &kp BSPC  &compat_mt LCTRL RIGHT_ALT  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI  &kp SQT  &kp RET  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT  &mo 1  &kp LEFT_WIN  &kp LA(LGUI)  &kp SPACE  &kp RA(RGUI)  &kp RG(RALT)
 >;
         };
 
@@ -98,15 +83,10 @@
         };
 
         layer2 { status = "reserved"; };
-
         layer3 { status = "reserved"; };
-
         layer4 { status = "reserved"; };
-
         layer5 { status = "reserved"; };
-
         layer6 { status = "reserved"; };
-
         layer7 { status = "reserved"; };
     };
 };
