@@ -20,24 +20,42 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
     behaviors {
-        // VIAL 감성의 구름타법 및 200ms/balanced/retro-tap 적용
+        &mt {
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            retro-tap;
+        };
+        
+        //output ~ with RShift
 
         mo: momentary_layer { display-name = "Layer Momentary"; };
         to: to_layer { display-name = "Layer To"; };
         tog: toggle_layer { display-name = "Layer Toggle"; };
+
+        // mt default: hold preferred. Rename it.
+
+        // mt_tp tap preferred
+
+        // lt default: tap preferred. Rename it.
+
+        // lt_hp:  hold preferred
+        
+
         trans: transparent { display-name = "_Trans"; };
         none: none { display-name = "Key(None)"; };
         
+
         #if 1
         out: outputs { display-name = "zmk_reserved_output_sel"; };
         ZMK_MACRO(Device_USB, bindings = <&out OUT_USB>;)
 
         bt: bluetooth { display-name = "zmk_reserved_bluetooth"; };
         
-        #define SHOW_LED 0xAB
+        #define SHOW_LED 0xAB //A5-AF Reserved
         ZMK_MACRO(FW_VER, bindings = <&kp LCTRL &kp LALT &kp LSHIFT &kp LGUI &kp RCTRL &kp RALT &kp RSHIFT &kp RGUI>;)
         ZMK_MACRO(zmk_reserved_bt_clear_0, bindings = <&bt BT_SEL 0>, <&bt BT_CLR>, <&kp SHOW_LED>;)
         ZMK_MACRO(zmk_reserved_bt_clear_1, bindings = <&bt BT_SEL 1>, <&bt BT_CLR>, <&kp SHOW_LED>;)
@@ -46,12 +64,18 @@
         ZMK_MACRO(zmk_reserved_bt_conn_1,  bindings = <&out OUT_BLE>, <&bt BT_SEL 1>, <&kp SHOW_LED>;)
         ZMK_MACRO(zmk_reserved_bt_conn_2,  bindings = <&out OUT_BLE>, <&bt BT_SEL 2>, <&kp SHOW_LED>;)
 
+        //
+
         sys_reset: sysreset { display-name = "zmk_reserved_reset"; };
         bootloader: bootload { display-name = "zmk_reserved_bootloader"; };
+        
+        
         studio_unlock: studio_unlock { display-name = "zmk_reserved_studio_unlock"; };
         #endif
+        
+        //mouse move
+        //mouse scroll
     };
-
     combos {
         compatible = "zmk,combos";
     };
@@ -69,15 +93,20 @@
 
         layer1 {
             bindings = <
-&bt BT_CLR  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &kp INSERT  &kp DELETE  &kp CAPSLOCK  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &out OUT_USB  &trans  &trans  &trans  &trans  &trans  &trans  &kp UP_ARROW  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp PAGE_UP  &kp LEFT_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &trans  &kp PRINTSCREEN  &kp K_CALCULATOR  &bootloader  &trans  &trans  &kp END  &kp PAGE_DOWN  &kp DOWN_ARROW  &kp C_VOL_UP  &trans  &trans  &trans  &trans  &kp C_MUTE  &kp C_VOL_DN
+&bt BT_CLR  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &kp INSERT  &kp DELETE  &kp CAPSLOCK  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &out OUT_USB  &trans  &trans  &trans  &trans  &trans  &trans  &kp UP_ARROW  &trans  &trans  &trans  &rgb_ug RGB_TOG  &trans  &trans  &trans  &trans  &kp KP_MULTIPLY  &kp KP_DIVIDE  &kp HOME  &kp PAGE_UP  &kp LEFT_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &trans  &kp PRINTSCREEN  &kp K_CALC  &bootloader  &trans  &trans  &kp END  &kp PAGE_DOWN  &kp DOWN_ARROW  &kp C_VOL_UP  &trans  &trans  &trans  &trans  &kp C_MUTE  &kp C_VOL_DN
 >;
         };
 
         layer2 { status = "reserved"; };
+
         layer3 { status = "reserved"; };
+
         layer4 { status = "reserved"; };
+
         layer5 { status = "reserved"; };
+
         layer6 { status = "reserved"; };
+
         layer7 { status = "reserved"; };
     };
 };
