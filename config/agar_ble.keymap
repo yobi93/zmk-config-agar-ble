@@ -1,0 +1,50 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
+
+/ {
+    behaviors {
+        mo: momentary_layer { display-name = "Layer Momentary"; };
+        to: to_layer { display-name = "Layer To"; };
+        tog: toggle_layer { display-name = "Layer Toggle"; };
+        trans: transparent { display-name = "_Trans"; };
+        none: none { display-name = "Key(None)"; };
+        
+        out: outputs { display-name = "zmk_reserved_output_sel"; };
+        bt: bluetooth { display-name = "zmk_reserved_bluetooth"; };
+        sys_reset: sysreset { display-name = "zmk_reserved_reset"; };
+        bootloader: bootload { display-name = "zmk_reserved_bootloader"; };
+        studio_unlock: studio_unlock { display-name = "zmk_reserved_studio_unlock"; };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+    };
+};
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+&gresc  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS  &kp EQUAL  &kp BSLH  &kp GRAVE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT  &kp RBKT  &kp BSPC  &mt LCTRL RIGHT_ALT  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMI  &kp SQT  &kp RET  &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHIFT  &mo 1  &kp LEFT_WIN  &kp LA(LGUI)  &kp SPACE  &kp RA(RGUI)  &kp RG(RALT)
+>;
+        };
+
+        layer1 {
+            bindings = <
+&bt BT_CLR  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &kp INSERT  &kp DELETE  &kp CAPSLOCK  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &out OUT_USB  &trans  &trans  &trans  &trans  &trans  &trans  &kp UP_ARROW  &trans  &trans  &trans  &rgb_ug RGB_TOG  &trans  &trans  &trans  &trans  &kp KP_MULTIPLY  &kp KP_DIVIDE  &kp HOME  &kp PAGE_UP  &kp LEFT_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &trans  &kp PRINTSCREEN  &kp K_CALC  &bootloader  &trans  &trans  &kp END  &kp PAGE_DOWN  &kp DOWN_ARROW  &kp C_VOL_UP  &trans  &trans  &trans  &trans  &kp C_MUTE  &kp C_VOL_DN
+>;
+        };
+
+        layer2 { status = "reserved"; };
+        layer3 { status = "reserved"; };
+        layer4 { status = "reserved"; };
+        layer5 { status = "reserved"; };
+        layer6 { status = "reserved"; };
+        layer7 { status = "reserved"; };
+    };
+};
