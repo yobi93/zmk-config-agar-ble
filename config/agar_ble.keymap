@@ -24,6 +24,12 @@
 
 / {
     behaviors {
+        &mt {
+            flavor = "balanced";
+            tapping-term-ms = <250>;
+            retro-tap;
+        };
+        
         //output ~ with RShift
 
         mo: momentary_layer { display-name = "Layer Momentary"; };
