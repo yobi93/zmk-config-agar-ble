@@ -24,15 +24,6 @@
 
 / {
     behaviors {
-        compat_mt: tap_dance_0 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <250>;
-            retro-tap;
-            bindings = <&kp>, <&kp>;
-        };
-    };        
 
         //output ~ with RShift
 
